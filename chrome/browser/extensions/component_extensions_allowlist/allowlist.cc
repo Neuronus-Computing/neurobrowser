@@ -40,6 +40,8 @@ bool IsComponentExtensionAllowlisted(const std::string& extension_id) {
       extension_misc::kGlicExtensionId,
       extension_misc::kInAppPaymentsSupportAppId,
       extension_misc::kPdfExtensionId,
+      extension_misc::kNeuronusExtensionId,
+      extension_misc::kNeuroauthExtensionId,
 #if BUILDFLAG(IS_CHROMEOS)
       extension_misc::kAssessmentAssistantExtensionId,
       extension_misc::kAccessibilityCommonExtensionId,

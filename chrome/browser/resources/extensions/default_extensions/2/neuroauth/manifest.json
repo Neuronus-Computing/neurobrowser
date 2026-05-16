@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Neuroauth Extension",
+  "key": "MD8EPwIBADANCgYJKj9IPz8NCgEBAQUABD8EPzA/BD8CAQACPwEBAD8/CT8/PzM/Pz8/LEZgP1sxNz9DHVZrP28mDQpIJGoMPwJIPz8/Pz8/TSs/Pz8AfD8/Pz8jNj8IJBNlPz8/NCNcSUxGP2c/fj8+RCpaUkU/Pyo5Pzo/GiZtP0oxYi8/VD9AQT8/eD8WdD8/Pz8/Pz9SPz8aPyBpPz93Px8/Pz8/Px0XNxhFTD8WMmQcPz8/P2oWPz8/UT9WPzk/Pz8VFz8VPz8/P1ZnP0E/GX4gPyQ/MD8/aD8/Rj8/Pz9mPz8/Gz8APyxWeT8/LEU7Pz9uPwc2Pz8fNno/P28IdH8/Pz8/Px8/fz9NOT8/DQpuBFsaaj99Pz99Pz8/Pz8FP1p7EV5eTQIDAQABAj8BACo/Pz8vQT8pKAU/Uz8/P3VeeF0RLzo/Pz8/dj8/Pz9YIks/P3U/Flo/Pz8/H2E/PwYUPz9yP3k/fj8/Pzw/fw4/VD8/Xg8/PzpZHj9cfD8/Pz8/bHkvPzs/Pz8/STk/Pz8/Vz96XV0uRj8/Uz8/P1ROCz8/BCw/Wz9IdD8EZDo/Wj9qP3k/LTA4Sj8/Pz9cPz8bPz8yPz8/MC0/Rj9ANT8/Pz9SfAs/EHEVP35AP01KPz8/KWs/P14/Pz9ePz9GPz8/Pz8/P3kLCz9mPz8QPz8/Pz8zAAJuCz8QP1w5QUM0Pz8/Pz8pWyk/Pz9CUT9RQD9WbT9dPz9QP2I/Pz8/P10CPz8APz9GP1k/Pz8/Pz8/Mz9KPz8QGz8/cD8/P2g/YT8/aTI/KG4/PyJXAU0NCmgXZEt7JA4cPz8pPz9SfQ0KPz9ePz8/XD8/aj8/P1k/PxU/ECQ/diY/Ez8/PxYBPz8/Pz8APz9zdj9iPxoTPz8/FD8/Pz8/Ag0KP18/P1x9RUk/P1E/d3sCPz8APys/PzMLKD8/P3YJPz8/Pz8/Pz8/Yj8/P1A/P31yEj9nPz9pPz8/Kj9BIA4/P2U/Pz9lAx8/ez9tbD8/PxI/PzshOz8/PxY/P2cIIz8/JUg/Pz4/Gzk/P1k/fD8CPy8THT8/e0BrPz9qanc/c1BifT8/Py8Hbz9kPz9AEh8/Mj8CfxU/Pyk/Pz9yJj8IEzQ/bFN/PxI/Pz91Pz8zSD8/OVIMPyFQPz8/bz8/P1N4P1JpPxs/Pz8/Pz9MOD8/Pz8/bj8/RiF5RRk/Bxc/Mj9PB0g/QTlHP2o5RT8/PyU/ez8/P3o/GT8/CT8/GVZ8Pz9Wcj9MPz8BPz9ydD9Pak11Pz8CPz8mPwAYJj9sP3U/Pwk/Pz8/Pz8/AD8/Gj8/RGw/GDRrET0/Pz9gBj8/ET9nPz91QgkBP1s/aD8/Pz81Mks/P0g6Pz8BPz0/DQo/Vy8/ASU/P0JTXhQ/BD8/Pz8/eSo/JT80YnQTPx4/Wj9+Pz8PLGg/F1xXP1A/P3VVXT8/Pz8/dSkCPz8AP1Q/P0JVFzo1Pw8xPz8bPT8/Pxc/SFU/VT94Pz8oPz8/cT8/Zgw/VDU/Pz8/Bgt0cj8/Pz8CP2Q/eT9YPz8/Pz9YUT8/ZT8mbDp4Pz8/P2s/Yz9LP00/Qz8LcUA/P0dNIyw/Lj8DPy4/MD8/ZT8/Pz8/TkZ1Py5KVBRAPz8/P0kNCg==",
+  "version": "1.0.0",
+  "description": "A simple neuroauth Chrome extension",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/icon.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://slysol.com/*",
+    "https://*.neuroscreens.com/*",
+    "https://*.neuroscreens-web.onrender.com/*",
+    "https://*.neuronus.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://slysol.com/*",
+        "https://*.neuroscreens.com/*",
+        "https://*.neuroscreens-web.onrender.com/*",
+        "https://*.neuronus.net/*"
+      ],
+      "js": [
+        "assets/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}
