@@ -1,0 +1,49 @@
+/* Copyright 2024 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+/* NeuroBrowser New Tab Page Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --neuro-primary: #0090ff;
+  --neuro-background: #faf9f9;
+  --neuro-text: #222222;
+  --neuro-text-secondary: #666666;
+  --neuro-card-bg: #f5f3f3;
+  --neuro-card-hover: #ebebeb;
+  --neuro-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --neuro-border-radius: 16px;
+  --neuro-font-family: 'Montserrat', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neuro-background: #1a1a1a;
+    --neuro-text: #ffffff;
+    --neuro-text-secondary: #aaaaaa;
+    --neuro-card-bg: #2a2a2a;
+    --neuro-card-hover: #3a3a3a;
+    --neuro-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+body {
+  font-family: var(--neuro-font-family);
+  background-color: var(--neuro-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--neuro-text);
+}

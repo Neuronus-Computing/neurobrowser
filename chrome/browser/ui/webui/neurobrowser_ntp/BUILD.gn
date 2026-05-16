@@ -1,0 +1,30 @@
+# Copyright 2024 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+source_set("neurobrowser_ntp") {
+  sources = [
+    "neurobrowser_ntp_message_handler.cc",
+    "neurobrowser_ntp_message_handler.h",
+    "neurobrowser_ntp_ui.cc",
+    "neurobrowser_ntp_ui.h",
+  ]
+
+  public_deps = [
+    "//chrome/browser/resources/neurobrowser_ntp:resources",
+  ]
+
+  deps = [
+    "//base",
+    "//chrome/browser:browser_process",
+    "//chrome/browser/profiles:profile",
+    "//chrome/browser/search_engines",
+    "//chrome/common",
+    "//components/search_engines",
+    "//content/public/browser",
+    "//services/network/public/mojom",
+    "//ui/base",
+    "//ui/webui",
+    "//url",
+  ]
+}

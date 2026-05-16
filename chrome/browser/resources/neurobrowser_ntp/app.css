@@ -1,0 +1,224 @@
+/* Copyright 2024 The Chromium Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+/* #css_wrapper_metadata_start
+ * #type=style-lit
+ * #scheme=relative
+ * #css_wrapper_metadata_end */
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--neuro-text, #222222);
+  text-align: center;
+  margin: 0;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  background-color: var(--neuro-card-bg, #f5f3f3);
+  border-radius: 32px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: var(--neuro-shadow, 0 4px 16px rgba(0, 0, 0, 0.1));
+  gap: 12px;
+}
+
+.search-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  outline: none;
+  color: var(--neuro-text, #222222);
+  font-family: inherit;
+}
+
+.search-input input::placeholder {
+  color: var(--neuro-text-secondary, #666666);
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dropdown-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 200px;
+}
+
+.dropdown.active .dropdown-menu {
+  display: flex;
+}
+
+.search-engine-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.search-engine-item:hover {
+  background-color: var(--neuro-card-hover, #f0f0f0);
+}
+
+.search-engine-item.selected {
+  background-color: rgba(0, 144, 255, 0.1);
+}
+
+.search-engine-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.search-engine-item span {
+  font-size: 14px;
+  color: var(--neuro-text, #222222);
+}
+
+.right-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--neuro-primary, #0090ff);
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--neuro-text, #222222);
+  align-self: flex-start;
+  margin-left: 20px;
+}
+
+.recent-tabs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recent-tab {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  background-color: var(--neuro-card-bg, #f5f3f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.recent-tab:hover {
+  background-color: var(--neuro-card-hover, #ebebeb);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.recent-tab svg {
+  width: 36px;
+  height: 36px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    background-color: #2a2a2a;
+  }
+  
+  .search-engine-item:hover {
+    background-color: #3a3a3a;
+  }
+  
+  .dropdown-icon {
+    background-color: #3a3a3a;
+  }
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Error state */
+.error-message {
+  color: #ff4444;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}

@@ -131,6 +131,7 @@ source_set("configs") {
       "//chrome/browser/ui/webui/iwa_dev",
       "//chrome/browser/ui/webui/media_router",
       "//chrome/browser/ui/webui/multistep_filter_internals",
+      "//chrome/browser/ui/webui/neurobrowser_ntp",
       "//chrome/browser/ui/webui/omnibox_everywhere",
       "//chrome/browser/ui/webui/omnibox_popup",
       "//chrome/browser/ui/webui/on_device_internals",

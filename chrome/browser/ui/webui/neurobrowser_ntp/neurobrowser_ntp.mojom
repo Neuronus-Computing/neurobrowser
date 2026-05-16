@@ -1,0 +1,56 @@
+// Copyright 2024 The Chromium Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+module neurobrowser_ntp.mojom;
+
+// Represents a search engine with its properties.
+struct SearchEngine {
+  string name;
+  string keyword;
+  string url;
+  string favicon_url;
+  bool is_default;
+};
+
+// Represents a recent tab.
+struct RecentTab {
+  string title;
+  string url;
+  string favicon_url;
+};
+
+// Used by the WebUI page to bootstrap bidirectional communication.
+interface PageHandlerFactory {
+  // The WebUI page's |BrowserProxy| singleton calls this method when the page
+  // is first initialized.
+  CreatePageHandler(pending_remote<Page> page,
+                    pending_receiver<PageHandler> handler);
+};
+
+// Browser-side handler for requests from WebUI page.
+interface PageHandler {
+  // Gets all available search engines.
+  GetSearchEngines() => (array<SearchEngine> search_engines);
+
+  // Sets the default search engine by keyword.
+  SetDefaultSearchEngine(string keyword);
+
+  // Gets recent tabs.
+  GetRecentTabs() => (array<RecentTab> recent_tabs);
+
+  // Opens a URL.
+  OpenUrl(string url);
+
+  // Performs a search with the given query using the default search engine.
+  PerformSearch(string query);
+};
+
+// WebUI-side handler for requests from the browser.
+interface Page {
+  // Called when search engines have changed.
+  OnSearchEnginesChanged(array<SearchEngine> search_engines);
+
+  // Called when recent tabs have changed.
+  OnRecentTabsChanged(array<RecentTab> recent_tabs);
+};

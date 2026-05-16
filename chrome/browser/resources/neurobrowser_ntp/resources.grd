@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grit latest_public_release="0" current_release="1">
+  <outputs>
+    <output filename="grit/neurobrowser_ntp_resources.h" type="rc_header">
+      <emit emit_type='prepend'></emit>
+    </output>
+    <output filename="grit/neurobrowser_ntp_resources_map.cc" type="resource_file_map_source" />
+    <output filename="grit/neurobrowser_ntp_resources_map.h" type="resource_map_header" />
+    <output filename="neurobrowser_ntp_resources.pak" type="data_package" />
+  </outputs>
+  <release seq="1">
+    <includes>
+      <include name="IDR_NEUROBROWSER_NTP_NEUROBROWSER_NTP_HTML" file="neurobrowser_ntp.html" type="BINDATA" />
+    </includes>
+  </release>
+</grit>
