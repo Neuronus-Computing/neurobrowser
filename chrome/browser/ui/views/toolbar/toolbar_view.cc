@@ -611,8 +611,14 @@ void ToolbarView::Init() {
 
   if (!features::IsWebUIAvatarButtonEnabled()) {
     avatar_ = AddChildView(std::make_unique<AvatarToolbarButton>(browser_));
-    bool show_avatar_toolbar_button =
+    bool show_avatar_toolbar_button = true;
+#if BUILDFLAG(IS_CHROMEOS)
+    show_avatar_toolbar_button =
         AvatarToolbarButtonInterface::CanShowForProfile(browser_->GetProfile());
+#else
+    // Hide the avatar button for NeuroBrowser
+    show_avatar_toolbar_button = false;
+#endif
     avatar_->SetVisible(show_avatar_toolbar_button);
   }
 

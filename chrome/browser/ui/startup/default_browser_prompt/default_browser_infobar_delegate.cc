@@ -24,10 +24,11 @@ infobars::InfoBar* DefaultBrowserInfoBarDelegate::Create(
     infobars::ContentInfoBarManager* infobar_manager,
     Profile* profile,
     bool can_pin_to_taskbar) {
-  return infobar_manager->AddInfoBar(
+  return nullptr;
+  /*return infobar_manager->AddInfoBar(
       CreateConfirmInfoBar(std::make_unique<DefaultBrowserInfoBarDelegate>(
           base::PassKey<DefaultBrowserInfoBarDelegate>(), profile,
-          can_pin_to_taskbar)));
+          can_pin_to_taskbar)));*/
 }
 
 DefaultBrowserInfoBarDelegate::DefaultBrowserInfoBarDelegate(
