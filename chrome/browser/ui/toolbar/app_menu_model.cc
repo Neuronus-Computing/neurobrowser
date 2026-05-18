@@ -1970,15 +1970,6 @@ void AppMenuModel::LogMenuMetrics(int command_id) {
       }
       LogMenuAction(MENU_ACTION_SHOW_SAFETY_HUB);
       break;
-    case IDC_DECLUTTER_TABS:
-      if (!uma_action_recorded_) {
-              
-        base::UmaHistogramMediumTimes("WrenchMenu.TimeToAction.DeclutterTabs",
-                                      delta);
-      }
-
-      LogMenuAction(MENU_ACTION_DECLUTTER_TABS);
-      break;
     case IDC_SAFETY_HUB_MANAGE_EXTENSIONS:
       if (!uma_action_recorded_) {
         base::UmaHistogramMediumTimes(

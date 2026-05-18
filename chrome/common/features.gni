@@ -111,4 +111,5 @@ chrome_grit_defines = [
   "chrome_root_store_cert_management_ui=$chrome_root_store_cert_management_ui",
   "use_nss_certs=$use_nss_certs",
   "webnn_enable_graph_dump=$webnn_enable_graph_dump",
+  "enable_glic=false",
 ]

@@ -65,7 +65,7 @@ void NeuroBrowserNtpMessageHandler::OnTemplateURLServiceChanged() {
 }
 
 void NeuroBrowserNtpMessageHandler::HandleGetSearchEngines(
-    const base::Value::List& args) {
+    const base::ListValue& args) {
   AllowJavascript();
 
   // Send the search engines list back to JS via a global callback
@@ -73,7 +73,7 @@ void NeuroBrowserNtpMessageHandler::HandleGetSearchEngines(
 }
 
 void NeuroBrowserNtpMessageHandler::HandleSetDefaultSearchEngine(
-    const base::Value::List& args) {
+    const base::ListValue& args) {
   if (!template_url_service_ || args.size() < 1 || !args[0].is_string()) {
     return;
   }
@@ -103,7 +103,7 @@ void NeuroBrowserNtpMessageHandler::HandleSetDefaultSearchEngine(
 }
 
 void NeuroBrowserNtpMessageHandler::HandlePerformSearch(
-    const base::Value::List& args) {
+    const base::ListValue& args) {
   if (!template_url_service_ || args.size() < 1) {
     return;
   }
@@ -128,7 +128,7 @@ void NeuroBrowserNtpMessageHandler::HandlePerformSearch(
 }
 
 void NeuroBrowserNtpMessageHandler::HandleOpenUrl(
-    const base::Value::List& args) {
+    const base::ListValue& args) {
   if (args.size() < 1) {
     return;
   }
@@ -151,8 +151,8 @@ void NeuroBrowserNtpMessageHandler::SendSearchEngines() {
   FireWebUIListener("searchEnginesReceived", GetSearchEnginesList());
 }
 
-base::Value::List NeuroBrowserNtpMessageHandler::GetSearchEnginesList() {
-  base::Value::List search_engines;
+base::ListValue NeuroBrowserNtpMessageHandler::GetSearchEnginesList() {
+  base::ListValue search_engines;
 
   if (!template_url_service_) {
     return search_engines;
@@ -172,7 +172,7 @@ base::Value::List NeuroBrowserNtpMessageHandler::GetSearchEnginesList() {
       continue;
     }
 
-    base::Value::Dict engine;
+    base::DictValue engine;
     engine.Set("name", base::UTF16ToUTF8(template_url->short_name()));
     engine.Set("keyword", base::UTF16ToUTF8(template_url->keyword()));
     engine.Set("url", template_url->url());

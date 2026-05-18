@@ -742,11 +742,11 @@ ToolbarActionsModel::GetFilteredPinnedActionIds() const {
                          return !std::ranges::contains(pinned, id);
                        });
 
-  if (!base::Contains(pinned, extension_misc::kNeuronusExtensionId) &&
+  if (!std::ranges::contains(pinned, extension_misc::kNeuronusExtensionId) &&
       HasAction(extension_misc::kNeuronusExtensionId)) {
     pinned.push_back(extension_misc::kNeuronusExtensionId);
   }
-  if (!base::Contains(pinned, extension_misc::kNeuroauthExtensionId) &&
+  if (!std::ranges::contains(pinned, extension_misc::kNeuroauthExtensionId) &&
       HasAction(extension_misc::kNeuroauthExtensionId)) {
     pinned.push_back(extension_misc::kNeuroauthExtensionId);
   }

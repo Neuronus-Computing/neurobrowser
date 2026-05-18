@@ -6,6 +6,7 @@
 #define CHROME_BROWSER_UI_WEBUI_NEUROBROWSER_NTP_NEUROBROWSER_NTP_MESSAGE_HANDLER_H_
 
 #include "base/memory/raw_ptr.h"
+#include "base/values.h"
 #include "components/search_engines/template_url_service.h"
 #include "components/search_engines/template_url_service_observer.h"
 #include "content/public/browser/web_ui_message_handler.h"
@@ -34,16 +35,16 @@ class NeuroBrowserNtpMessageHandler : public content::WebUIMessageHandler,
 
  private:
   // Message handlers.
-  void HandleGetSearchEngines(const base::Value::List& args);
-  void HandleSetDefaultSearchEngine(const base::Value::List& args);
-  void HandlePerformSearch(const base::Value::List& args);
-  void HandleOpenUrl(const base::Value::List& args);
+  void HandleGetSearchEngines(const base::ListValue& args);
+  void HandleSetDefaultSearchEngine(const base::ListValue& args);
+  void HandlePerformSearch(const base::ListValue& args);
+  void HandleOpenUrl(const base::ListValue& args);
 
   // Sends the current list of search engines to the page.
   void SendSearchEngines();
 
   // Builds a list of search engines as base::Value.
-  base::Value::List GetSearchEnginesList();
+  base::ListValue GetSearchEnginesList();
 
   raw_ptr<Profile> profile_;
   raw_ptr<TemplateURLService> template_url_service_;
