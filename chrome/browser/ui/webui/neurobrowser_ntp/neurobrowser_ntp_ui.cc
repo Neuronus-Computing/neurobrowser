@@ -6,9 +6,11 @@
 
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/webui/neurobrowser_ntp/neurobrowser_ntp_message_handler.h"
+#include "chrome/browser/ui/webui/sanitized_image/sanitized_image_source.h"
 #include "chrome/common/webui_url_constants.h"
 #include "chrome/grit/neurobrowser_ntp_resources.h"
 #include "chrome/grit/neurobrowser_ntp_resources_map.h"
+#include "content/public/browser/url_data_source.h"
 #include "content/public/browser/web_ui.h"
 #include "content/public/browser/web_ui_data_source.h"
 #include "services/network/public/mojom/content_security_policy.mojom.h"
@@ -26,6 +28,10 @@ NeuroBrowserNtpUI::NeuroBrowserNtpUI(content::WebUI* web_ui)
   web_ui->AddMessageHandler(
       std::make_unique<NeuroBrowserNtpMessageHandler>(profile));
   
+  // Register SanitizedImageSource to proxy external network image loads securely
+  content::URLDataSource::Add(profile,
+                              std::make_unique<SanitizedImageSource>(profile));
+
   content::WebUIDataSource* source = content::WebUIDataSource::CreateAndAdd(
       profile, chrome::kChromeUINeuroBrowserNtpHost);
 
@@ -47,10 +53,16 @@ NeuroBrowserNtpUI::NeuroBrowserNtpUI(content::WebUI* web_ui)
       network::mojom::CSPDirectiveName::ScriptSrc,
       "script-src chrome://resources 'self' 'unsafe-inline';");
 
-  // Allow chrome:// favicon URLs and external images
+  // Allow chrome:// favicon URLs, sanitized images, and external images
   source->OverrideContentSecurityPolicy(
       network::mojom::CSPDirectiveName::ImgSrc,
-      "img-src chrome://favicon chrome://theme https: data: 'self';");
+      "img-src chrome://favicon chrome://image chrome://theme https: data: 'self';");
+
+  // Allow connecting to secure external network APIs (fetch fallback)
+  source->OverrideContentSecurityPolicy(
+      network::mojom::CSPDirectiveName::ConnectSrc,
+      "connect-src https: 'self';");
+
 }
 
 NeuroBrowserNtpUI::~NeuroBrowserNtpUI() = default;

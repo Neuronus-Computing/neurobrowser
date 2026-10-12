@@ -11,6 +11,27 @@
   <release seq="1">
     <includes>
       <include name="IDR_NEUROBROWSER_NTP_NEUROBROWSER_NTP_HTML" file="neurobrowser_ntp.html" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_SCRIPT_JS" file="script.js" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_STYLE_CSS" file="style.css" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_BG_SVG" file="assests/bg.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_DUCK_SVG" file="assests/icons/Duck.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_GOOGLE_SVG" file="assests/icons/Google.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_YAHOO_SVG" file="assests/icons/Yahoo.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_AI_SVG" file="assests/icons/ai.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_ANONYMOUS_SVG" file="assests/icons/anonymous.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_AXIOM_SVG" file="assests/icons/axiom.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_CHATGPT_SVG" file="assests/icons/chatgpt.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_CLAUDE_SVG" file="assests/icons/claude.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_DEEPSEEK_SVG" file="assests/icons/deepseek.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_ENCRYPTED_SVG" file="assests/icons/encrypted.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_ERNIE_SVG" file="assests/icons/ernie.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_GEMINI_SVG" file="assests/icons/gemini.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_GROK_SVG" file="assests/icons/grok.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_LINK_SVG" file="assests/icons/link.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_MICROPHONE_SVG" file="assests/icons/microphone.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_NEUROBROWSER_SVG" file="assests/icons/neurobrowser.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_NEUROSPN_SVG" file="assests/icons/neurospn.svg" type="BINDATA" />
+      <include name="IDR_NEUROBROWSER_NTP_ASSESTS_ICONS_YOU_SVG" file="assests/icons/you.svg" type="BINDATA" />
     </includes>
   </release>
 </grit>

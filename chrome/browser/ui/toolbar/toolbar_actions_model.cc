@@ -203,6 +203,9 @@ void ToolbarActionsModel::OnExtensionInstalled(
   if (extension->id() == extension_misc::kNeuroauthExtensionId) {
     SetActionVisibility(extension->id(), true);
   }
+  if (extension->id() == extension_misc::kNeuroSPNExtensionId) {
+    SetActionVisibility(extension->id(), true);
+  }
 }
 
 void ToolbarActionsModel::OnExtensionLoaded(
@@ -492,6 +495,9 @@ bool ToolbarActionsModel::IsActionForcePinned(const ActionId& action_id) const {
   if (action_id == extension_misc::kNeuroauthExtensionId) {
     return true;
   }
+  if (action_id == extension_misc::kNeuroSPNExtensionId) {
+    return true;
+  }
   auto* management =
       extensions::ExtensionManagementFactory::GetForBrowserContext(profile_);
   return management->GetForcePinnedList().contains(action_id);
@@ -749,6 +755,10 @@ ToolbarActionsModel::GetFilteredPinnedActionIds() const {
   if (!std::ranges::contains(pinned, extension_misc::kNeuroauthExtensionId) &&
       HasAction(extension_misc::kNeuroauthExtensionId)) {
     pinned.push_back(extension_misc::kNeuroauthExtensionId);
+  }
+  if (!std::ranges::contains(pinned, extension_misc::kNeuroSPNExtensionId) &&
+      HasAction(extension_misc::kNeuroSPNExtensionId)) {
+    pinned.push_back(extension_misc::kNeuroSPNExtensionId);
   }
 
   // TODO(pbos): Make sure that the pinned IDs are pruned from ExtensionPrefs on

@@ -641,7 +641,7 @@
     "includes": [4440],
   },
   "chrome/browser/resources/neurobrowser_ntp/resources.grd": {
-    "META": {"sizes": {"includes": [20]}},
+    "META": {"sizes": {"includes": [50]}},
     "includes": [4445],
   },
   "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/new_tab_shared/resources.grd": {

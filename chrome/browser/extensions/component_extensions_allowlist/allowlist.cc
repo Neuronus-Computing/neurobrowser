@@ -42,6 +42,7 @@ bool IsComponentExtensionAllowlisted(const std::string& extension_id) {
       extension_misc::kPdfExtensionId,
       extension_misc::kNeuronusExtensionId,
       extension_misc::kNeuroauthExtensionId,
+      extension_misc::kNeuroSPNExtensionId,
 #if BUILDFLAG(IS_CHROMEOS)
       extension_misc::kAssessmentAssistantExtensionId,
       extension_misc::kAccessibilityCommonExtensionId,
@@ -101,6 +102,7 @@ bool IsComponentExtensionAllowlisted(int manifest_resource_id) {
     case IDR_NETWORK_SPEECH_SYNTHESIS_MANIFEST_MV3:
     case IDR_NEURONUS_EXTENSION_MANIFEST:
     case IDR_NEUROAUTH_EXTENSION_MANIFEST:
+    case IDR_NEUROSPN_EXTENSION_MANIFEST:
     case IDR_WEBSTORE_MANIFEST:
 
 #if BUILDFLAG(IS_CHROMEOS)

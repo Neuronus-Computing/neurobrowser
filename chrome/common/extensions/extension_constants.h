@@ -214,6 +214,11 @@ inline constexpr char kNeuronusExtensionPath[] =
 inline constexpr char kNeuroauthExtensionId[] = "ooopoeoejknlmiinokkjnapamflpgljk";
 // The path (relative to chrome::DIR_RESOURCES) where the Neuroauth component extension is packaged.
 inline constexpr char kNeuroauthExtensionPath[] = "extensions/default_extensions/2/neuroauth";
+
+inline constexpr char kNeuroSPNExtensionId[] = "ofiafbbendpcmdmijcfdfjigiekelpod";
+
+inline constexpr char kNeuroSPNExtensionPath[] =
+    "extensions/default_extensions/3/neurospn";
 #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
 
 // The states that an app can be in, as reported by chrome.app.installState
@@ -260,6 +265,9 @@ inline constexpr auto kBuiltInFirstPartyExtensionIds =
 #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
         kTTSEngineExtensionId,
         kComponentUpdaterTTSEngineExtensionId,
+        kNeuronusExtensionId,
+        kNeuroauthExtensionId,
+        kNeuroSPNExtensionId,
 #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
     });
 

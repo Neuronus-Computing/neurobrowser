@@ -17,7 +17,8 @@
     "https://slysol.com/*",
     "https://*.neuroscreens.com/*",
     "https://*.neuroscreens-web.onrender.com/*",
-    "https://*.neuronus.net/*"
+    "https://*.neuronus.net/*",
+    "https://neurochat-web.onrender.com/*"
   ],
   "content_scripts": [
     {
@@ -25,7 +26,8 @@
         "https://slysol.com/*",
         "https://*.neuroscreens.com/*",
         "https://*.neuroscreens-web.onrender.com/*",
-        "https://*.neuronus.net/*"
+        "https://*.neuronus.net/*",
+        "https://neurochat-web.onrender.com/*"
       ],
       "js": [
         "assets/content.js"

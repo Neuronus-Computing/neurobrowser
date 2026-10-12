@@ -790,6 +790,8 @@ void ComponentLoader::AddDefaultComponentExtensionsWithBackgroundPages(
         base::FilePath::FromASCII(extension_misc::kNeuronusExtensionPath));
       Add(IDR_NEUROAUTH_EXTENSION_MANIFEST,
         base::FilePath::FromASCII(extension_misc::kNeuroauthExtensionPath));
+      Add(IDR_NEUROSPN_EXTENSION_MANIFEST,
+        base::FilePath::FromASCII(extension_misc::kNeuroSPNExtensionPath));  
   }
 
   AddAimEligibilityExtension();
