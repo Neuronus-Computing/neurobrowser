@@ -20,21 +20,6 @@
       <include name="IDR_NETWORK_SPEECH_SYNTHESIS_MV3_JS" file="network_speech_synthesis/mv3/tts_extension.js" type="BINDATA" />
 	  
 		
-	  <include name="IDR_NEURONUS_EXTENSION_MANIFEST" file="extensions/default_extensions/1/neuronus_extension/manifest.json" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_INDEX_JS" file="extensions/default_extensions/1/neuronus_extension/assets/index.js" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_INDEX_HTML" file="extensions/default_extensions/1/neuronus_extension/index.html" allowexternalscript="true" type="BINDATA"/>
-  	<include name="IDR_NEURONUS_EXTENSION_STYLE_CSS" file="extensions/default_extensions/1/neuronus_extension/assets/index.css" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_ICON" file="extensions/default_extensions/1/neuronus_extension/icon.png" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_GPU_ICON" file="extensions/default_extensions/1/neuronus_extension/images/gpu.png" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_LOGO" file="extensions/default_extensions/1/neuronus_extension/icons/logo.png" type="BINDATA"/>
-	  <include name="IDR_NEURONUS_EXTENSION_PREVIOUS" file="extensions/default_extensions/1/neuronus_extension/icons/previous.jsx" type="BINDATA"/>
-    <include name="IDR_NEUROAUTH_EXTENSION_MANIFEST" file="extensions/default_extensions/2/neuroauth/manifest.json" type="BINDATA"/>
-    <include name="IDR_NEUROAUTH_EXTENSION_CONTENT_JS" file="extensions/default_extensions/2/neuroauth/assets/content.js" type="BINDATA"/>
-    <include name="IDR_NEUROAUTH_EXTENSION_INDEX_JS" file="extensions/default_extensions/2/neuroauth/assets/index.js" type="BINDATA"/>
-    <include name="IDR_NEUROAUTH_EXTENSION_INDEX_CSS" file="extensions/default_extensions/2/neuroauth/assets/index.css" type="BINDATA"/>
-	  <include name="IDR_NEUROAUTH_EXTENSION_INDEX_HTML" file="extensions/default_extensions/2/neuroauth/index.html" allowexternalscript="true" type="BINDATA"/>
-		<include name="IDR_NEUROAUTH_EXTENSION_ICON" file="extensions/default_extensions/2/neuroauth/icons/icon.png" type="BINDATA"/>
-    <include name="IDR_NEUROAUTH_EXTENSION_LOGO" file="extensions/default_extensions/2/neuroauth/icons/logo.png" type="BINDATA"/>
 
     <include name="IDR_NEUROSPN_EXTENSION_MANIFEST" file="extensions/default_extensions/3/neurospn/manifest.json" type="BINDATA"/>
     <include name="IDR_NEUROSPN_EXTENSION_CONTENT_JS" file="extensions/default_extensions/3/neurospn/content_scripts/content-0.js" type="BINDATA"/>

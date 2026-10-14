@@ -1,5 +1,5 @@
 import { sendWithPromise } from 'chrome://resources/js/cr.js';
-const NEUROCHAT_BASE_URL = "https://neurochat-7i5p.onrender.com";
+
 (function () {
     "use strict";
 
@@ -155,28 +155,22 @@ const NEUROCHAT_BASE_URL = "https://neurochat-7i5p.onrender.com";
     const root = document.getElementById("ntp-root");
     const featureCards = document.querySelector(".feature-cards");
 
-    let currentAccessToken = "";
+    let currentAccessToken = "skeleton_token";
     function applySearchAuthFromToken(token) {
-        currentAccessToken = token || "";
+        currentAccessToken = token || "skeleton_token";
         if (!root) return;
-        const locked = token == null || token === "";
-        if (locked) {
-            root.setAttribute("data-auth-search", "locked");
-        } else {
-            root.removeAttribute("data-auth-search");
-        }
+        root.removeAttribute("data-auth-search");
     }
 
     function refreshSearchAuth() {
         sendWithPromise('getAccessToken').then(token => {
             applySearchAuthFromToken(token);
         }).catch(() => {
-            applySearchAuthFromToken(undefined);
+            applySearchAuthFromToken("skeleton_token");
         });
     }
 
     refreshSearchAuth();
-    setInterval(refreshSearchAuth, 500);
     const featureModelCard = document.getElementById("feature-card-selected-model");
     const modeSegments = document.querySelectorAll(".mode-segment");
     const modeWebBtn = document.getElementById("mode-segment-web");
@@ -329,11 +323,6 @@ const NEUROCHAT_BASE_URL = "https://neurochat-7i5p.onrender.com";
                     chrome.send("performSearch", [q]);
                 }
             } else if (uiMode === "ai") {
-                const locked = root && root.getAttribute("data-auth-search") === "locked";
-                if (locked) {
-                    return;
-                }
-
                 const loadingOverlay = document.getElementById("ai-loading-overlay");
                 if (loadingOverlay) {
                     loadingOverlay.classList.remove("hidden");
@@ -342,38 +331,12 @@ const NEUROCHAT_BASE_URL = "https://neurochat-7i5p.onrender.com";
                 const modelId = (MODELS[selectedModel] && MODELS[selectedModel].id) || 4;
 
                 sendWithPromise('sendAiMessage', modelId, q, currentAccessToken).then(responseStr => {
-                    let groupId = null;
-                    if (responseStr && responseStr.trim() !== "") {
-                        try {
-                            const ipcResult = JSON.parse(responseStr);
-                            if (ipcResult.success && ipcResult.body) {
-                                const res = JSON.parse(ipcResult.body);
-                                if (res && res.data && res.data.group_id) {
-                                    groupId = res.data.group_id;
-                                }
-                            }
-                        } catch (e) {
-                            console.error("[NeuroChat] Error parsing response JSON:", e);
-                        }
-                    } else {
-                        console.error("[NeuroChat] Received empty result from IPC channel.");
-                    }
-
-                    if (groupId) {
-                        const redirectUrl = `https://neurochat-web.onrender.com/chat/${groupId}`;
-                        if (window.chrome && chrome.send) {
-                            chrome.send("openUrl", [redirectUrl]);
-                        } else {
-                            window.location.href = redirectUrl;
-                        }
-                    } else {
-                        if (loadingOverlay) loadingOverlay.classList.add("hidden");
-                        alert("Failed to create chat session. Please try again.");
-                    }
-                }).catch(err => {
-                    console.error("[NeuroChat] Send message failed:", err);
                     if (loadingOverlay) loadingOverlay.classList.add("hidden");
-                    alert("Network error. Please try again.");
+                    console.log("[NeuroChat Skeleton] Simulated AI response:", responseStr);
+                    if (input) input.value = "";
+                }).catch(err => {
+                    console.error("[NeuroChat Skeleton] Simulated message error:", err);
+                    if (loadingOverlay) loadingOverlay.classList.add("hidden");
                 });
             }
         });

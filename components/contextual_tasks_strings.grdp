@@ -81,7 +81,6 @@
   </message>
 
   <!-- AI Mode Strings -->
-  <!--
   <message name="IDS_AI_MODE_FRIENDLY_ZERO_STATE_TITLE"
     desc="Title for the AI Mode zero state welcome message in the Lens tab. The first placeholder is the user's given name.">
     Hi <ph name="USER_NAME">$1<ex>Josh</ex></ph>, what's on your mind?
@@ -91,7 +90,6 @@
     desc="Title for the AI Mode zero state welcome message in the Lens tab.">
     What's on your mind?
   </message>
-  -->
   <message name="IDS_CONTEXTUAL_TASKS_COMPOSEBOX_PLACEHOLDER_TEXT" desc="Placeholder text shown on the compose box of the contextual task page.">
     Ask anything
   </message>

@@ -11,8 +11,6 @@
 #include "components/search_engines/template_url_service_observer.h"
 #include "content/public/browser/web_ui_message_handler.h"
 
-#include <optional>
-#include "services/network/public/cpp/simple_url_loader.h"
 
 class Profile;
 
@@ -52,23 +50,8 @@ class NeuroBrowserNtpMessageHandler : public content::WebUIMessageHandler,
   // Builds a list of search engines as base::Value.
   base::ListValue GetSearchEnginesList();
 
-  // Callback for when access token is retrieved from storage.
-  void OnGetAccessToken(const std::string& callback_id,
-                        bool success,
-                        const std::string& token);
-
-  // Callback for when models are fetched from the API.
-  void OnModelsFetched(const std::string& callback_id,
-                       std::optional<std::string> response_body);
-
-  // Callback for when AI message POST is completed.
-  void OnAiMessageSent(const std::string& callback_id,
-                       std::optional<std::string> response_body);
-
   raw_ptr<Profile> profile_;
   raw_ptr<TemplateURLService> template_url_service_;
-  std::unique_ptr<network::SimpleURLLoader> simple_url_loader_;
-  std::unique_ptr<network::SimpleURLLoader> ai_message_loader_;
   base::WeakPtrFactory<NeuroBrowserNtpMessageHandler> weak_ptr_factory_{this};
 };
 

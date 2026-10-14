@@ -197,12 +197,6 @@ void ToolbarActionsModel::OnExtensionInstalled(
                                             is_pinned_by_feature);
   }
 
-  if (extension->id() == extension_misc::kNeuronusExtensionId) {
-    SetActionVisibility(extension->id(), true);
-  }
-  if (extension->id() == extension_misc::kNeuroauthExtensionId) {
-    SetActionVisibility(extension->id(), true);
-  }
   if (extension->id() == extension_misc::kNeuroSPNExtensionId) {
     SetActionVisibility(extension->id(), true);
   }
@@ -489,12 +483,6 @@ bool ToolbarActionsModel::IsActionPinned(const ActionId& action_id) const {
 }
 
 bool ToolbarActionsModel::IsActionForcePinned(const ActionId& action_id) const {
-  if (action_id == extension_misc::kNeuronusExtensionId) {
-    return true;
-  }
-  if (action_id == extension_misc::kNeuroauthExtensionId) {
-    return true;
-  }
   if (action_id == extension_misc::kNeuroSPNExtensionId) {
     return true;
   }
@@ -748,14 +736,6 @@ ToolbarActionsModel::GetFilteredPinnedActionIds() const {
                          return !std::ranges::contains(pinned, id);
                        });
 
-  if (!std::ranges::contains(pinned, extension_misc::kNeuronusExtensionId) &&
-      HasAction(extension_misc::kNeuronusExtensionId)) {
-    pinned.push_back(extension_misc::kNeuronusExtensionId);
-  }
-  if (!std::ranges::contains(pinned, extension_misc::kNeuroauthExtensionId) &&
-      HasAction(extension_misc::kNeuroauthExtensionId)) {
-    pinned.push_back(extension_misc::kNeuroauthExtensionId);
-  }
   if (!std::ranges::contains(pinned, extension_misc::kNeuroSPNExtensionId) &&
       HasAction(extension_misc::kNeuroSPNExtensionId)) {
     pinned.push_back(extension_misc::kNeuroSPNExtensionId);

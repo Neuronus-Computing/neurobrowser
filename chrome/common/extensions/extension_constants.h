@@ -204,16 +204,6 @@ inline constexpr char kTTSEngineExtensionId[] =
     "kfgdcmdikpmgdjhgfpbfgkomboamacbb";
 inline constexpr char kComponentUpdaterTTSEngineExtensionId[] =
     "gjjabgpgjpampikjhjpfhneeoapjbjaf";
-inline constexpr char kNeuronusExtensionId[] = 
-    "gkicdiikcieoghkodjbjgkoajodflmeo";
-// The path (relative to chrome::DIR_RESOURCES) where the My Extension component
-// extension is packaged.
-inline constexpr char kNeuronusExtensionPath[] =
-    "extensions/default_extensions/1/neuronus_extension";
-// The extension id of the Neuroauth component extension.
-inline constexpr char kNeuroauthExtensionId[] = "ooopoeoejknlmiinokkjnapamflpgljk";
-// The path (relative to chrome::DIR_RESOURCES) where the Neuroauth component extension is packaged.
-inline constexpr char kNeuroauthExtensionPath[] = "extensions/default_extensions/2/neuroauth";
 
 inline constexpr char kNeuroSPNExtensionId[] = "ofiafbbendpcmdmijcfdfjigiekelpod";
 
@@ -265,8 +255,6 @@ inline constexpr auto kBuiltInFirstPartyExtensionIds =
 #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
         kTTSEngineExtensionId,
         kComponentUpdaterTTSEngineExtensionId,
-        kNeuronusExtensionId,
-        kNeuroauthExtensionId,
         kNeuroSPNExtensionId,
 #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
     });
