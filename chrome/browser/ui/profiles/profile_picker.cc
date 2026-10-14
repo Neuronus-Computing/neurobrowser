@@ -33,6 +33,8 @@ namespace {
 
 bool g_open_command_line_urls_in_next_profile_opened = false;
 
+// Disabled for NeuroBrowser - function no longer needed
+/*
 ProfilePicker::AvailabilityOnStartup GetAvailabilityOnStartup() {
   int availability_on_startup = g_browser_process->local_state()->GetInteger(
       prefs::kBrowserProfilePickerAvailabilityOnStartup);
@@ -47,6 +49,7 @@ ProfilePicker::AvailabilityOnStartup GetAvailabilityOnStartup() {
       NOTREACHED();
   }
 }
+*/
 
 bool IsFirstRunDisabledByPolicy(Profile& profile) {
   const PrefService* const local_state = g_browser_process->local_state();
@@ -189,51 +192,7 @@ bool ProfilePicker::Shown() {
 
 // static
 StartupProfileMode ProfilePicker::GetStartupMode() {
-  AvailabilityOnStartup availability_on_startup = GetAvailabilityOnStartup();
-
-  if (availability_on_startup == AvailabilityOnStartup::kDisabled) {
-    return StartupProfileMode::kBrowserWindow;
-  }
-
-  // TODO (crbug.com/40159795): Move this over the urls check (in
-  // startup_browser_creator.cc) once the profile picker can forward urls
-  // specified in command line.
-  if (availability_on_startup == AvailabilityOnStartup::kForced) {
-    return StartupProfileMode::kProfilePicker;
-  }
-
-  ProfileManager* profile_manager = g_browser_process->profile_manager();
-
-  // Only launch the profile creation flow at startup if the user has specified
-  // both a profile email address and the switch to create a new profile. Only
-  // launch the profile creation flow if and a profile with this email does not
-  // already exist.
-  base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
-  if (command_line->HasSwitch(switches::kProfileEmail)) {
-    std::string switch_email =
-        command_line->GetSwitchValueASCII(switches::kProfileEmail);
-    if (!switch_email.empty()) {
-      if (!profile_manager->GetProfileDirForEmail(switch_email).empty()) {
-        return StartupProfileMode::kBrowserWindow;
-      } else if (command_line->HasSwitch(
-                     switches::kCreateProfileEmailIfNotExists)) {
-        return StartupProfileMode::kProfilePicker;
-      }
-    }
-  }
-
-  size_t number_of_profiles = profile_manager->GetNumberOfProfiles();
-  // Need to consider 0 profiles as this is what happens in some browser-tests.
-  if (number_of_profiles <= 1) {
-    return StartupProfileMode::kBrowserWindow;
-  }
-
-  bool pref_enabled = g_browser_process->local_state()->GetBoolean(
-      prefs::kBrowserShowProfilePickerOnStartup);
-  base::UmaHistogramBoolean("ProfilePicker.AskOnStartup", pref_enabled);
-  if (pref_enabled) {
-    return StartupProfileMode::kProfilePicker;
-  }
+  // Disable profile picker for NeuroBrowser - always start with browser window
   return StartupProfileMode::kBrowserWindow;
 }
 

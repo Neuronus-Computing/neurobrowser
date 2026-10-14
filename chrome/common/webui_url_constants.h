@@ -233,6 +233,9 @@ const GURL& ChromeUINewTabPageURLAsGURL();
 inline constexpr char kChromeUINewTabURL[] = "chrome://newtab/";
 const GURL& ChromeUINewTabURLAsGURL();
 inline constexpr char kChromeUINewTabFooterURL[] = "chrome://newtab-footer/";
+inline constexpr char kChromeUINeuroBrowserNtpHost[] = "neurobrowser-ntp";
+inline constexpr char kChromeUINeuroBrowserNtpURL[] =
+    "chrome://neurobrowser-ntp/";
 inline constexpr char kChromeUIUntrustedNtpMicrosoftAuthHost[] =
     "ntp-microsoft-auth";
 inline constexpr char kChromeUIUntrustedNtpMicrosoftAuthURL[] =

@@ -254,17 +254,7 @@ void AddInfoBarsIfNecessary(BrowserWindowInterface* browser,
       infobars::ContentInfoBarManager::FromWebContents(web_contents);
 
   if (!google_apis::HasAPIKeyConfigured()) {
-    if (infobars::IsInfoBarMigrated(
-            infobars::InfoBarDelegate::GOOGLE_API_KEYS_INFOBAR_DELEGATE)) {
-      if (auto* manager =
-              infobars::BrowserInfoBarManager::From(g_browser_process)) {
-        manager->Show(
-            tabs::TabInterface::GetFromContents(web_contents),
-            infobars::InfoBarDelegate::GOOGLE_API_KEYS_INFOBAR_DELEGATE);
-      }
-    } else {
-      GoogleApiKeysInfoBarDelegate::Create(infobar_manager);
-    }
+    // Disabled for NeuroBrowser: don't show Google API keys missing infobar
   }
 
   if (ObsoleteSystem::IsObsoleteNowOrSoon()) {

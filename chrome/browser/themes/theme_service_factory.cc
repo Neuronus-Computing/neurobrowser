@@ -123,6 +123,7 @@ ThemeServiceFactory::BuildServiceInstanceForBrowserContext(
   return provider;
 }
 
+
 bool ThemeServiceFactory::ServiceIsCreatedWithBrowserContext() const {
   return true;
 }

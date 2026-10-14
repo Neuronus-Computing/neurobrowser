@@ -2175,20 +2175,7 @@ void AppMenuModel::Build() {
   AddSeparator(ui::NORMAL_SEPARATOR);
 
 #if !BUILDFLAG(IS_CHROMEOS)
-  sub_menus_.push_back(std::make_unique<ProfileSubMenuModel>(
-      this, browser()->GetProfile(),
-      BrowserWindow::FromBrowser(browser())->GetColorProvider()));
-  auto* const profile_submenu_model =
-      static_cast<ProfileSubMenuModel*>(sub_menus_.back().get());
-  AddSubMenu(kProfileMenuPlaceholder, profile_submenu_model->profile_name(),
-             profile_submenu_model);
-  SetIconForCommandId(kProfileMenuPlaceholder,
-                      profile_submenu_model->avatar_image_model());
-  SetElementIdentifierAt(GetIndexOfCommandId(kProfileMenuPlaceholder).value(),
-                         kProfileMenuItem);
-  SetAccessibleNameAt(GetIndexOfCommandId(kProfileMenuPlaceholder).value(),
-                      profile_submenu_model->accessible_name());
-  AddSeparator(ui::SPACING_SEPARATOR);
+  // Profile menu hidden for NeuroBrowser
 #endif
 
   if (!browser_->GetProfile()->IsGuestSession()) {

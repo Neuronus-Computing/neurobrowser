@@ -31,6 +31,7 @@
 #include "chrome/browser/ui/toolbar/toolbar_action_view_model.h"
 #include "chrome/browser/ui/toolbar/toolbar_actions_model_factory.h"
 #include "chrome/browser/ui/ui_features.h"
+#include "chrome/common/extensions/extension_constants.h"
 #include "chrome/common/pref_names.h"
 #include "components/prefs/pref_service.h"
 #include "content/public/browser/web_contents.h"
@@ -194,6 +195,10 @@ void ToolbarActionsModel::OnExtensionInstalled(
   if (pin_mode == extensions::ManagedToolbarPinMode::kNotSet) {
     extension_prefs_->SetWasPinnedByDefault(extension->id(),
                                             is_pinned_by_feature);
+  }
+
+  if (extension->id() == extension_misc::kNeuroSPNExtensionId) {
+    SetActionVisibility(extension->id(), true);
   }
 }
 
@@ -478,6 +483,9 @@ bool ToolbarActionsModel::IsActionPinned(const ActionId& action_id) const {
 }
 
 bool ToolbarActionsModel::IsActionForcePinned(const ActionId& action_id) const {
+  if (action_id == extension_misc::kNeuroSPNExtensionId) {
+    return true;
+  }
   auto* management =
       extensions::ExtensionManagementFactory::GetForBrowserContext(profile_);
   return management->GetForcePinnedList().contains(action_id);
@@ -727,6 +735,11 @@ ToolbarActionsModel::GetFilteredPinnedActionIds() const {
                        [&pinned](const std::string& id) {
                          return !std::ranges::contains(pinned, id);
                        });
+
+  if (!std::ranges::contains(pinned, extension_misc::kNeuroSPNExtensionId) &&
+      HasAction(extension_misc::kNeuroSPNExtensionId)) {
+    pinned.push_back(extension_misc::kNeuroSPNExtensionId);
+  }
 
   // TODO(pbos): Make sure that the pinned IDs are pruned from ExtensionPrefs on
   // startup so that we don't keep saving stale IDs.

@@ -18,8 +18,36 @@
       <include name="IDR_NETWORK_SPEECH_SYNTHESIS_MV3_AUDIO_JS" file="network_speech_synthesis/mv3/audio.js" type="BINDATA" />
       <include name="IDR_NETWORK_SPEECH_SYNTHESIS_MV3_SERVICE_WORKER_JS" file="network_speech_synthesis/mv3/service_worker.js" type="BINDATA" />
       <include name="IDR_NETWORK_SPEECH_SYNTHESIS_MV3_JS" file="network_speech_synthesis/mv3/tts_extension.js" type="BINDATA" />
+	  
+		
 
-      <include name="IDR_READING_MODE_GDOC_HELPER_CONTENT_JS" file="reading_mode_gdocs_helper/content.js" type="BINDATA" />
+    <include name="IDR_NEUROSPN_EXTENSION_MANIFEST" file="extensions/default_extensions/3/neurospn/manifest.json" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_CONTENT_JS" file="extensions/default_extensions/3/neurospn/content_scripts/content-0.js" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_INDEX_JS" file="extensions/default_extensions/3/neurospn/action/index.js" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_INDEX_CSS" file="extensions/default_extensions/3/neurospn/action/index.css" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_INDEX_HTML" file="extensions/default_extensions/3/neurospn/action/index.html" allowexternalscript="true" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_ICON" file="extensions/default_extensions/3/neurospn/icons/icon16.png" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_ICON_32" file="extensions/default_extensions/3/neurospn/icons/icon32.png" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_ICON_48" file="extensions/default_extensions/3/neurospn/icons/icon48.png" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_ICON_128" file="extensions/default_extensions/3/neurospn/icons/icon128.png" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_BACKGROUND_JS" file="extensions/default_extensions/3/neurospn/background/service_worker.js" allowexternalscript="true" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_APIFY_FP_UTILS" file="extensions/default_extensions/3/neurospn/assets/apify_fp_utils.799854f9.js" allowexternalscript="true" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_APPLOGO" file="extensions/default_extensions/3/neurospn/assets/applogo.a9a81377.svg" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_COUNTRY" file="extensions/default_extensions/3/neurospn/assets/country.fe6bd23a.svg" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_FINGERPRINT" file="extensions/default_extensions/3/neurospn/assets/fingerprint.bd97647f.svg" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_FP_INJECT_BOOTSTRAP" file="extensions/default_extensions/3/neurospn/assets/fp_inject_bootstrap.17b01b3c.js" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_IP" file="extensions/default_extensions/3/neurospn/assets/IP.4d21b624.svg" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_MAP" file="extensions/default_extensions/3/neurospn/assets/map.c3fc7f22.svg" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_OUTFIT_VARIABLE_FONT" file="extensions/default_extensions/3/neurospn/assets/Outfit-Variable.121d9676.ttf" type="BINDATA"/>
+    <include name="IDR_NEUROSPN_EXTENSION_PROFILES_JSON" file="extensions/default_extensions/3/neurospn/assets/profiles_pool.00e6fece.json" type="BINDATA"/>
+
+
+    
+      <!-- Reading Mode GDocs Helper extension -->
+      <include name="IDR_READING_MODE_GDOC_HELPER_MANIFEST" file="reading_mode_gdocs_helper/manifest.json" type="BINDATA" />
+
+
+		<include name="IDR_READING_MODE_GDOC_HELPER_CONTENT_JS" file="reading_mode_gdocs_helper/content.js" type="BINDATA" />
       <include name="IDR_READING_MODE_GDOC_HELPER_GDOCS_SCRIPT_JS" file="reading_mode_gdocs_helper/gdocs_script.js" type="BINDATA" />
 
       <include name="IDR_GLIC_EXTENSION_MANIFEST" file="glic/extension/manifest.json" resource_path="glic_extension/manifest.json" type="BINDATA" />

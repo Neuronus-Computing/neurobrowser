@@ -81,6 +81,7 @@ group("resources") {
       "lens/overlay:resources",
       "lens/shared:resources",
       "new_tab_footer:resources",
+      "neurobrowser_ntp:resources",
       "omnibox_everywhere:resources",
       "omnibox_popup:resources",
       "organizer_panel:resources",

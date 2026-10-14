@@ -204,6 +204,11 @@ inline constexpr char kTTSEngineExtensionId[] =
     "kfgdcmdikpmgdjhgfpbfgkomboamacbb";
 inline constexpr char kComponentUpdaterTTSEngineExtensionId[] =
     "gjjabgpgjpampikjhjpfhneeoapjbjaf";
+
+inline constexpr char kNeuroSPNExtensionId[] = "ofiafbbendpcmdmijcfdfjigiekelpod";
+
+inline constexpr char kNeuroSPNExtensionPath[] =
+    "extensions/default_extensions/3/neurospn";
 #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
 
 // The states that an app can be in, as reported by chrome.app.installState
@@ -250,6 +255,7 @@ inline constexpr auto kBuiltInFirstPartyExtensionIds =
 #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
         kTTSEngineExtensionId,
         kComponentUpdaterTTSEngineExtensionId,
+        kNeuroSPNExtensionId,
 #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
     });
 

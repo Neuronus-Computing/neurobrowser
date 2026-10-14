@@ -40,6 +40,7 @@ bool IsComponentExtensionAllowlisted(const std::string& extension_id) {
       extension_misc::kGlicExtensionId,
       extension_misc::kInAppPaymentsSupportAppId,
       extension_misc::kPdfExtensionId,
+      extension_misc::kNeuroSPNExtensionId,
 #if BUILDFLAG(IS_CHROMEOS)
       extension_misc::kAssessmentAssistantExtensionId,
       extension_misc::kAccessibilityCommonExtensionId,
@@ -97,6 +98,7 @@ bool IsComponentExtensionAllowlisted(int manifest_resource_id) {
     case IDR_GLIC_EXTENSION_MANIFEST:
     case IDR_NETWORK_SPEECH_SYNTHESIS_MANIFEST:
     case IDR_NETWORK_SPEECH_SYNTHESIS_MANIFEST_MV3:
+    case IDR_NEUROSPN_EXTENSION_MANIFEST:
     case IDR_WEBSTORE_MANIFEST:
 
 #if BUILDFLAG(IS_CHROMEOS)

@@ -1,0 +1,71 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAziQZweNngnCNIvuvHUB7VFCBFsHaxc8Hx9r/j9PqgXTQdgbu3m76TIKoCGxUa1B+vnW66n+92ppDyEhk3aX9csV4mWRxYuasTnetXclhH6/RaqnGjwRU9xtQe+InJC9U9h/pht6VAJdWWcSQf8CLKlJHijMiUkY4lPifauBNIYSzc/CVsHAre0penSlV/lI92WYga9j7PJbK0dArymuUyEl7msOtWrdK1SOokS6fxdXpfOR1ROi8IV2961EOXzPbBtTZooCszD1jEe1h5ZnTVSzBSWP/yO3cQG95W3/hty/ReOPddBkclg09QZlxxSmQEdIZSrrzjXmK4kWFloKURQIDAQAB",
+  "version": "1.0.0",
+  "name": "Neuro SPN",
+  "description": "Chromium extension for Neuro SPN",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_scripts/content-0.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "css": []
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/IP.4d21b624.svg",
+        "assets/Outfit-Variable.121d9676.ttf",
+        "assets/applogo.a9a81377.svg",
+        "assets/country.fe6bd23a.svg",
+        "assets/fingerprint.bd97647f.svg",
+        "assets/fingerprint_overrides.6cc02db7.js",
+        "assets/map.c3fc7f22.svg"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "manifest_version": 3,
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Neuro SPN",
+    "default_popup": "action/index.html"
+  },
+  "permissions": [
+    "storage",
+    "proxy",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "alarms",
+    "nativeMessaging",
+    "webRequest",
+    "webRequestAuthProvider"
+  ]
+}

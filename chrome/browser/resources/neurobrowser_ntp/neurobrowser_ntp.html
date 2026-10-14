@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NeuroBrowser</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main class="hero" id="ntp-root" data-ui-mode="ai">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="overlay" aria-hidden="true"></div>
+
+        <section class="content">
+            <div class="content-middle">
+                <header class="time-row">
+                    <span class="time" aria-live="polite"></span>
+                    <span class="date" aria-live="polite"></span>
+                </header>
+
+                <div id="ntp-search-region" class="ntp-search-region">
+                    <div class="search-stack">
+                        <form class="search-form" id="ntp-search-form" action="#" method="get" autocomplete="off">
+                            <div class="search-box glass">
+                                <div class="search-row-primary">
+                                    <label class="visually-hidden" for="ntp-query">Search or ask intelligence</label>
+                                    <input id="ntp-query" class="search-input" name="q" type="search"
+                                        enterkeyhint="search"
+                                        placeholder="Search or ask intelligence for deeper answers" />
+
+
+                                    <div class="mode-toggle glass glass--tight" role="group" aria-label="Search mode">
+                                        <button type="button" class="mode-segment" data-mode="web" aria-pressed="false"
+                                            id="mode-segment-web">
+                                            <span class="mode-icon-bubble">
+                                                <svg class="mode-icon-svg mode-web-magnifier" viewBox="0 0 24 24"
+                                                    aria-hidden="true">
+                                                    <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor"
+                                                        stroke-width="1.75" />
+                                                    <path d="M16 16l4.5 4.5" fill="none" stroke="currentColor"
+                                                        stroke-width="1.75" stroke-linecap="round" />
+                                                </svg>
+                                                <img class="mode-web-engine-img" src="" alt="" width="12" height="12"
+                                                    hidden />
+                                            </span>
+                                            <span class="mode-label mode-web-label">Web Search</span>
+                                        </button>
+                                        <button type="button" class="mode-segment is-active" data-mode="ai"
+                                            aria-pressed="true" id="mode-segment-ai">
+                                            <span class="mode-icon-bubble">
+                                                <img class="mode-ai-icon" src="./assests/icons/ai.svg" alt="" width="12"
+                                                    height="12" />
+                                            </span>
+                                            <span class="mode-label mode-ai-label">AI</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="search-row-actions">
+                                    <span class="search-row-actions-spacer"></span>
+                                    <!-- <button type="button" class="icon-btn" id="ntp-attach" aria-label="Links">
+                                        <img class="action-icon" src="./assests/icons/link.svg" alt="" width="18"
+                                            height="18" />
+                                    </button>
+                                    <button type="button" class="icon-btn" id="ntp-voice" aria-label="Voice input">
+                                        <img class="action-icon" src="./assests/icons/microphone.svg" alt="" width="18"
+                                            height="18" />
+                                    </button> -->
+                                    <button type="submit" class="send-btn" aria-label="Submit search">
+                                        <span class="send-arrow" aria-hidden="true">↑</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="provider-rows">
+                            <div class="model-row engine-row" id="engine-row" role="tablist"
+                                aria-label="Search engines">
+                                <button type="button" class="model-pill glass engine-pill is-active" role="tab"
+                                    aria-selected="true" data-engine="duckduckgo">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/Duck.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">DuckDuckGo</span>
+                                </button>
+                                <button type="button" class="model-pill glass engine-pill" role="tab"
+                                    aria-selected="false" data-engine="google">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/Google.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Google</span>
+                                </button>
+                                <button type="button" class="model-pill glass engine-pill" role="tab"
+                                    aria-selected="false" data-engine="yahoo">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/Yahoo.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Yahoo</span>
+                                </button>
+                            </div>
+
+                            <div class="model-row" id="model-row" role="tablist" aria-label="Intelligence providers">
+                                <button type="button" class="model-pill glass is-active" role="tab" aria-selected="true"
+                                    data-model="all">
+                                    <span class="model-icon-bubble"><img class="model-icon" src="./assests/icons/ai.svg"
+                                            alt="" width="16" height="16" /></span>
+                                    <span class="model-label">Auto</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="axiom">
+                                    <span class="model-icon-bubble model-icon-bubble--wide"><img class="model-icon"
+                                            src="./assests/icons/axiom.svg" alt="" width="18" height="15" /></span>
+                                    <span class="model-label">Axiom</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="chatgpt">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/chatgpt.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">ChatGPT</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="gemini">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/gemini.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Gemini 1.5</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="grok">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/grok.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Grok</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="deepseek">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/deepseek.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">DeepSeek</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="ernie">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/ernie.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Ernie</span>
+                                </button>
+                                <button type="button" class="model-pill glass" role="tab" aria-selected="false"
+                                    data-model="claude">
+                                    <span class="model-icon-bubble"><img class="model-icon"
+                                            src="./assests/icons/claude.svg" alt="" width="18" height="18" /></span>
+                                    <span class="model-label">Claude 3</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="feature-cards feature-cards--chain">
+                <li class="feature-cards__cell">
+                    <button type="button" class="feature-card glass">
+                        <img src="./assests/icons/you.svg" alt="" class="feature-icon" width="28" height="35" />
+                        <span class="feature-title">You</span>
+                    </button>
+                </li>
+                <li class="feature-cards__bridge" aria-hidden="true"><span class="feature-cards__hr"></span></li>
+                <li class="feature-cards__cell">
+                    <button type="button" class="feature-card glass">
+                        <img src="./assests/icons/encrypted.svg" alt="" class="feature-icon" width="32" height="32" />
+                        <span class="feature-title">Encrypted</span>
+                        <span class="feature-sub">AES-256</span>
+                    </button>
+                </li>
+                <li class="feature-cards__bridge" aria-hidden="true"><span class="feature-cards__hr"></span></li>
+                <li class="feature-cards__cell">
+                    <button type="button" class="feature-card glass">
+                        <img src="./assests/icons/neurospn.svg" alt="" class="feature-icon" width="32" height="32" />
+                        <span class="feature-title">NeuroSPN</span>
+                        <span class="feature-sub">Identity stripped</span>
+                    </button>
+                </li>
+                <li class="feature-cards__bridge" aria-hidden="true"><span class="feature-cards__hr"></span></li>
+                <li class="feature-cards__cell">
+                    <button type="button" class="feature-card glass">
+                        <img src="./assests/icons/anonymous.svg" alt="" class="feature-icon" width="32" height="32" />
+                        <span class="feature-title">Anonymous</span>
+                        <span class="feature-sub">No identity</span>
+                    </button>
+                </li>
+                <li class="feature-cards__bridge" aria-hidden="true"><span class="feature-cards__hr"></span></li>
+                <li class="feature-cards__cell">
+                    <button type="button" class="feature-card glass" id="feature-card-selected-model"
+                        data-selected-model="all">
+                        <img src="./assests/icons/ai.svg" alt="" class="feature-icon feature-icon--model" width="32"
+                            height="32" />
+                        <span class="feature-title">All</span>
+                        <span class="feature-sub">Active model</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="ai-loading-overlay" class="ai-loading-overlay hidden">
+        <div class="ai-loading-content">
+            <div class="ai-spinner"></div>
+            <p class="ai-loading-text">Please wait while we are redirecting...</p>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

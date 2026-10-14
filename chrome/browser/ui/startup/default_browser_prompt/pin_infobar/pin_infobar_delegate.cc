@@ -33,6 +33,7 @@
 
 namespace default_browser {
 
+
 // static
 infobars::InfoBar* PinInfoBarDelegate::Create(
     infobars::ContentInfoBarManager* infobar_manager) {

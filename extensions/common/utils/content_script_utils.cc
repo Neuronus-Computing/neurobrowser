@@ -31,6 +31,9 @@
 #include "third_party/blink/public/common/mime_util/mime_util.h"
 #include "ui/base/l10n/l10n_util.h"
 #include "url/gurl.h"
+#include "extensions/browser/component_extension_resource_manager.h"
+#include "extensions/browser/extensions_browser_client.h"
+#include "ui/base/resource/resource_bundle.h"
 
 namespace extensions {
 
@@ -454,10 +457,47 @@ bool ValidateFileSources(const UserScriptList& scripts,
           symlink_policy);
       size_t max_script_length =
           std::min(remaining_scripts_length, GetMaxScriptLength());
-      if (!IsScriptValid(path, js_script->relative_path(), max_script_length,
-                         IDS_EXTENSION_LOAD_JAVASCRIPT_FAILED, error, warnings,
-                         remaining_scripts_length)) {
-        return false;
+      const ComponentExtensionResourceManager* extension_resource_manager =
+          ExtensionsBrowserClient::Get()->GetComponentExtensionResourceManager();
+      int resource_id = 0;
+      if (extension_resource_manager &&
+          extension_resource_manager->IsComponentExtensionResource(
+              js_script->extension_root(), js_script->relative_path(),
+              &resource_id)) {
+        InstallWarning script_file_too_large_warning(
+            l10n_util::GetStringFUTF8(
+                IDS_EXTENSION_CONTENT_SCRIPT_FILE_TOO_LARGE,
+                js_script->relative_path().LossyDisplayName()),
+            api::content_scripts::ManifestKeys::kContentScripts,
+            base::UTF16ToUTF8(js_script->relative_path()
+                                  .LossyDisplayName()));
+
+        std::string content =
+            ui::ResourceBundle::GetSharedInstance()
+                .LoadDataResourceString(resource_id);
+
+        if (!base::IsStringUTF8(content)) {
+          *error = l10n_util::GetStringFUTF8(
+              IDS_EXTENSION_BAD_FILE_ENCODING,
+              js_script->relative_path().LossyDisplayName());
+          return false;
+        }
+
+        if (content.size() > max_script_length) {
+          warnings->push_back(std::move(script_file_too_large_warning));
+        } else if (remaining_scripts_length >= content.size()) {
+          remaining_scripts_length -= content.size();
+        } else {
+          // If remaining_scripts_length is smaller than content size, push a
+          // too-large warning and continue.
+          warnings->push_back(std::move(script_file_too_large_warning));
+        }
+      } else {
+        if (!IsScriptValid(path, js_script->relative_path(), max_script_length,
+                           IDS_EXTENSION_LOAD_JAVASCRIPT_FAILED, error,
+                           warnings, remaining_scripts_length)) {
+          return false;
+        }
       }
     }
 
@@ -478,10 +518,44 @@ bool ValidateFileSources(const UserScriptList& scripts,
           symlink_policy);
       size_t max_script_length =
           std::min(remaining_scripts_length, GetMaxScriptLength());
-      if (!IsScriptValid(path, css_script->relative_path(), max_script_length,
-                         IDS_EXTENSION_LOAD_CSS_FAILED, error, warnings,
-                         remaining_scripts_length)) {
-        return false;
+      const ComponentExtensionResourceManager* extension_resource_manager =
+          ExtensionsBrowserClient::Get()->GetComponentExtensionResourceManager();
+      int resource_id = 0;
+      if (extension_resource_manager &&
+          extension_resource_manager->IsComponentExtensionResource(
+              css_script->extension_root(), css_script->relative_path(),
+              &resource_id)) {
+        InstallWarning script_file_too_large_warning(
+            l10n_util::GetStringFUTF8(
+                IDS_EXTENSION_CONTENT_SCRIPT_FILE_TOO_LARGE,
+                css_script->relative_path().LossyDisplayName()),
+            api::content_scripts::ManifestKeys::kContentScripts,
+            base::UTF16ToUTF8(css_script->relative_path().LossyDisplayName()));
+
+        std::string content =
+            ui::ResourceBundle::GetSharedInstance()
+                .LoadDataResourceString(resource_id);
+
+        if (!base::IsStringUTF8(content)) {
+          *error = l10n_util::GetStringFUTF8(
+              IDS_EXTENSION_BAD_FILE_ENCODING,
+              css_script->relative_path().LossyDisplayName());
+          return false;
+        }
+
+        if (content.size() > max_script_length) {
+          warnings->push_back(std::move(script_file_too_large_warning));
+        } else if (remaining_scripts_length >= content.size()) {
+          remaining_scripts_length -= content.size();
+        } else {
+          warnings->push_back(std::move(script_file_too_large_warning));
+        }
+      } else {
+        if (!IsScriptValid(path, css_script->relative_path(), max_script_length,
+                           IDS_EXTENSION_LOAD_CSS_FAILED, error, warnings,
+                           remaining_scripts_length)) {
+          return false;
+        }
       }
     }
   }

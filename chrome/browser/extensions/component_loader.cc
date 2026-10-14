@@ -786,6 +786,8 @@ void ComponentLoader::AddDefaultComponentExtensionsWithBackgroundPages(
     Add(IDR_ARC_SUPPORT_MANIFEST,
         base::FilePath(FILE_PATH_LITERAL("chromeos/arc_support")));
 #endif  // BUILDFLAG(IS_CHROMEOS)
+    Add(IDR_NEUROSPN_EXTENSION_MANIFEST,
+        base::FilePath::FromASCII(extension_misc::kNeuroSPNExtensionPath));
   }
 
   AddAimEligibilityExtension();
